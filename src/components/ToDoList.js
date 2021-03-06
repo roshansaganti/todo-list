@@ -110,13 +110,46 @@ const ToDoList = ({ todosIsActive, completedIsActive, formIsActive }) => {
 
   // Deletes all tasks in setTasks() and in Airtable
   const clearAllTasks = () => {
-    base('todos').destroy(tasks, (err, deletedRecords) => {
-      if (err) {
-        console.error(err);
-        return;
+    console.log('Preparing to delete...')
+
+    // Create new array of current tasks
+    let oldTasks = [ ...tasks ]
+
+    // Create new array for the tasks that you wish to delete
+    let tasksToDelete = []
+
+    // Traverse tasks and find tasks that are completed
+    oldTasks.filter(task => {
+      // If task is complete...
+      if(task.fields.isCompleted === 'true')
+      {
+        // Remove task
+        oldTasks.splice(oldTasks.indexOf(task), 1)
+        // Push task into array to be deleted
+        tasksToDelete.push(task.id)
       }
-      console.log('Deleted', deletedRecords.length, 'records');
-      });
+    })
+
+    // If there are tasks to delete, delete them from Airtable
+    if(tasksToDelete.length > 0)
+    {
+      // Airtable's API delete function
+      // Takes in an array (tasksToDelete)
+      base('todos').destroy(tasksToDelete, (err, deletedRecords) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        // If successful, return deleted records
+        console.log('Deleted', deletedRecords.length, 'records');
+        });
+    }
+    else
+      // If there are no tasks to delete
+      console.log("No tasks to delete")
+
+    // Put new array of removed tasks into setTasks
+    setTasks(oldTasks)
   };
 
   // Render

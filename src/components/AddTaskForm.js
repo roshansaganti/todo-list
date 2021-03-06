@@ -16,7 +16,8 @@ const AddTaskForm = ({ addTask }) => {
     (todo, date) && addTask(todo, date)
     setTodo("");
   };
-
+  
+  // Render
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">

@@ -13,7 +13,12 @@ const Completed = ({ tasks, updateTask, clearAllTasks }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const clearTasksAndClose = () => {
+    clearAllTasks();
+    handleClose();
+  }
   
+  // Render
   return (
     <div className="Completed">
       <p className="d-flex justify-content-between">
@@ -47,7 +52,7 @@ const Completed = ({ tasks, updateTask, clearAllTasks }) => {
             <Modal.Body>Are you sure you want to clear all completed tasks? This cannot be undone.</Modal.Body>
             <Modal.Footer>
               <Button variant="success" onClick={handleClose}>Cancel</Button>
-              <Button variant="danger" onClick={handleClose}>Clear</Button>
+              <Button variant="danger" onClick={clearTasksAndClose}>Clear</Button>
             </Modal.Footer>
           </Modal>
         {/* End Modal */}
