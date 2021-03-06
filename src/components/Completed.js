@@ -28,7 +28,7 @@ const Completed = ({ tasks, updateTask, clearAllTasks }) => {
       </p>
         <hr />
         {tasks.map((task, index) => (
-          {/* Show completed tasks */}
+          /* Show completed tasks */
           (task.fields.isCompleted === 'true') ? (
             <button key={task.id} onClick={() => updateTask(index)} className="btn btn-outline-danger btn-block">
               <div className="card-body">

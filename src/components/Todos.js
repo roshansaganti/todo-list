@@ -7,7 +7,7 @@ const Todos = ({ tasks, updateTask }) => {
       <h3>Todos</h3>
         <hr />
         {tasks.map((task, index) => (
-          {/* Show incomplete tasks */}
+          /* Show incomplete tasks */
           (task.fields.isCompleted === 'false') ? (
             <button key={task.id} onClick={() => updateTask(index)} className="btn btn-outline-primary btn-block">
               <div className="card-body">
