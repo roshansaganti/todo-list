@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ToDoList from './components/ToDoList';
 
+import Moment from 'react-moment'
+
 function App() {
   return (
     <Router>
@@ -15,6 +17,9 @@ function App() {
           </div>
           <div className="col-md-2 col-lg-3 col-xl-3"></div>
         </div>
+        <footer className="text-center pt-5 pb-5">
+          &copy; {new Date().getFullYear()}
+        </footer>
       </div>
     </div>
     </Router>
