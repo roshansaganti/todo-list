@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ToDoList from './components/ToDoList';
 
-import Moment from 'react-moment'
-
 function App() {
   return (
     <Router>
