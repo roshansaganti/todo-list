@@ -58,21 +58,6 @@ const ToDoList = ({ todosIsActive, completedIsActive, formIsActive }) => {
       }])
     });
   }
-
-  // Delete a task
-  const deleteTask = index => {      
-    // const newTasks = [...tasks];
-    // newTasks.splice(index, 1);
-    // setTasks(newTasks);
-
-    base('todos').destroy(index.id, (err, deletedRecords) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log('Deleted', deletedRecords.length, 'records');
-      });
-  };
   
   // This is a function that strikes-through tasks when we click on them.
   const updateTask = (index) => {
