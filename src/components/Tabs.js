@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Nav from 'react-bootstrap/Nav'
 
 const Tabs = ({ todosIsActive, completedIsActive }) => {
-  // console.log(tabs)
   return (
     <div className="Tabs">
       <ul className="nav nav-tabs">
@@ -10,7 +9,7 @@ const Tabs = ({ todosIsActive, completedIsActive }) => {
           {todosIsActive ? <Link className="nav-link active" to="/">Todos</Link> : <Link className="nav-link" to="/">Todos</Link>}
         </li>
         <li className="nav-item">
-        {completedIsActive ? <Link className="nav-link active" to="/">Completed</Link> : <Link className="nav-link" to="/completed">Completed</Link>}
+          {completedIsActive ? <Link className="nav-link active" to="/completed">Completed</Link> : <Link className="nav-link" to="/completed">Completed</Link>}
         </li>
       </ul>
     </div>

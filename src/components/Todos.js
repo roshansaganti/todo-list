@@ -1,28 +1,28 @@
 import React from 'react'
+import Moment from 'react-moment'
 
-const Todos = ({ tasks, toggleTask }) => {
-  const formatDate = (date) => {
-    return date.format('mm dd yyyy');
-  }
+Moment.globalFormat = "dddd MMMM D, YYYY"
+Moment.globalLocal = true;
 
+const Todos = ({ tasks, updateTask }) => {
   return (
     <div className="Todos">
       <h3>Todos</h3>
         <hr />
-        <div className="card">
-          {tasks.map((task, index) => (
-            task.isCompleted ? (
-              ""
-            ) : (
-                <button key={task.id} onClick={() => toggleTask(index)} className={task.isCompleted ? ("btn-outline-primary card todo-text todo-completed ") : ("todo-text card btn-outline-primary")}>
-                  <div className="card-body text-left">
-                    <h5 className="card-title">{task.todo}</h5>
-                    <p className="card-text">{() => { formatDate(task.date) }}</p>
-                  </div>
-                </button>
-            )
-          ))}
-        </div>
+        {tasks.map((task, index) => (
+          (task.fields.isCompleted === 'false') ? (
+            <button key={task.id} onClick={() => updateTask(index)} className="btn btn-outline-primary btn-block">
+              <div className="card-body">
+                <h4 className="card-title">{task.fields.todo}</h4>
+                <div className="card-text">
+                  <em>Due Date:</em> <strong><Moment>{task.fields.date}</Moment></strong>
+                </div>
+              </div>
+            </button>
+          ) : (
+            ""
+          )
+        ))}
     </div>
   )
 }
