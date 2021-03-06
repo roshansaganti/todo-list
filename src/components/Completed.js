@@ -34,7 +34,7 @@ const Completed = ({ tasks, updateTask, clearAllTasks }) => {
               <div className="card-body">
                 <h4 className="card-title">{task.fields.todo}</h4>
                 <div className="card-text">
-                  <em>Due Date: </em><strong><Moment local>{task.fields.date}</Moment> at <Moment local format="h:mm a">{task.fields.date}</Moment></strong>
+                  <em>Due Date: </em><strong><Moment format="dddd MMMM Do, YYYY" local>{task.fields.date}</Moment> at <Moment local format="h:mm a">{task.fields.date}</Moment></strong>
                 </div>
               </div>
             </button>
